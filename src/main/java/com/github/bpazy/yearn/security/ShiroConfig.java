@@ -38,6 +38,7 @@ public class ShiroConfig {
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/login", "anon");
+        chainDefinition.addPathDefinition("/register", "anon");
         chainDefinition.addPathDefinition("/**", "authc");
         return chainDefinition;
     }

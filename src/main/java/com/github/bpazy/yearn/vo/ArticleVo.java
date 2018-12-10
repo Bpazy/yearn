@@ -6,7 +6,7 @@ import lombok.Data;
  * @author ziyuan
  */
 @Data
-public class BlogVo {
+public class ArticleVo {
     private String title;
     private String content;
 }

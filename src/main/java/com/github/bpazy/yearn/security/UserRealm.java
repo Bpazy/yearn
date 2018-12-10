@@ -1,5 +1,6 @@
 package com.github.bpazy.yearn.security;
 
+import com.github.bpazy.yearn.po.User;
 import com.github.bpazy.yearn.service.UserService;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
@@ -8,13 +9,15 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * @author ziyuan
  */
 public class UserRealm extends AuthorizingRealm {
+    @Autowired
+    private UserService userService;
 
     @Override
     public String getName() {
@@ -29,11 +32,10 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = (String) token.getPrincipal();
-        String password = (String) token.getCredentials();
-        if (!"bpazy".equals(username)) throw new UnknownAccountException("username not exists");
-        if (!"123456".equals(password)) throw new IncorrectCredentialsException("password is incorrect");
+        User user = userService.findUserByUsername(username);
+        if (user == null) throw new UnknownAccountException("username not exists");
 
-        return new SimpleAuthenticationInfo(username, password, getName());
+        return new SimpleAuthenticationInfo(username, user.getPassword(), ByteSource.Util.bytes("hcrf"), getName());
     }
 
     @Override

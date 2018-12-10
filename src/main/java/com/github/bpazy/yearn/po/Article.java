@@ -14,10 +14,11 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private String userId;
-    private String username;
-    private String password;
+public class Article {
+    private String articleId;
+    private String title;
+    private String content;
+    private String status;
     private Date createTime;
-    private Date updateTIme;
+    private Date updateTime;
 }

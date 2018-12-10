@@ -1,6 +1,7 @@
 package com.github.bpazy.yearn.controller;
 
 import com.github.bpazy.yearn.common.Result;
+import com.github.bpazy.yearn.common.ResultGenerator;
 import com.github.bpazy.yearn.service.LoginService;
 import com.github.bpazy.yearn.vo.LoginVo;
 import com.github.bpazy.yearn.vo.RegisterVo;
@@ -21,12 +22,12 @@ public class LoginController {
     @RequestMapping("/login")
     public Result login(@RequestBody LoginVo loginVo) {
         loginService.login(loginVo);
-        return Result.ok();
+        return ResultGenerator.ok("Login success");
     }
 
     @RequestMapping("/register")
     public Result register(@RequestBody RegisterVo registerVo) {
         loginService.register(registerVo);
-        return Result.ok();
+        return ResultGenerator.ok("register success");
     }
 }

@@ -1,7 +1,8 @@
 package com.github.bpazy.yearn.controller;
 
-import com.github.bpazy.yearn.service.BlogService;
-import com.github.bpazy.yearn.vo.BlogVo;
+import com.github.bpazy.yearn.common.ResultGenerator;
+import com.github.bpazy.yearn.service.ArticleService;
+import com.github.bpazy.yearn.vo.ArticleVo;
 import com.github.bpazy.yearn.common.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/blog")
-public class BlogController {
+public class ArticleController {
     @Autowired
-    private BlogService blogService;
+    private ArticleService articleService;
 
-    @RequestMapping("/saveBlog")
+    @RequestMapping("/saveArticle")
     @RequiresPermissions("blog:save")
-    public Result saveBlog(@RequestBody BlogVo blogVo) {
-        blogService.saveBlog(blogVo);
-        return Result.ok();
+    public Result saveBlog(@RequestBody ArticleVo articleVo) {
+        articleService.saveArticle(articleVo);
+        return ResultGenerator.ok();
     }
 
-    @RequestMapping("/deleteBlog/{blogId}")
+    @RequestMapping("/deleteArticle/{articleId}")
     @RequiresPermissions("blog:delete")
-    public Result deleteBlog(@PathVariable String blogId) {
-        blogService.deleteBlog(blogId);
-        return Result.ok();
+    public Result deleteBlog(@PathVariable String articleId) {
+        articleService.deleteArticle(articleId);
+        return ResultGenerator.ok();
     }
 }
