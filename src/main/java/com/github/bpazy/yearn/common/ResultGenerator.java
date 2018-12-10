@@ -25,4 +25,20 @@ public class ResultGenerator {
                 .data(data)
                 .build();
     }
+
+    public static Result fail() {
+        return fail(null);
+    }
+
+    public static Result fail(String message) {
+        return fail(message, null);
+    }
+
+    public static Result fail(String message, Object data) {
+        return Result.builder()
+                .code(FAIL)
+                .message(message)
+                .data(data)
+                .build();
+    }
 }

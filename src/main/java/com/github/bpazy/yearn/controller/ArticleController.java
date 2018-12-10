@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ziyuan
  */
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/article")
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
     @RequestMapping("/saveArticle")
-    @RequiresPermissions("blog:save")
+    @RequiresPermissions("article:save")
     public Result saveBlog(@RequestBody ArticleVo articleVo) {
         articleService.saveArticle(articleVo);
         return ResultGenerator.ok();
     }
 
     @RequestMapping("/deleteArticle/{articleId}")
-    @RequiresPermissions("blog:delete")
+    @RequiresPermissions("article:delete")
     public Result deleteBlog(@PathVariable String articleId) {
         articleService.deleteArticle(articleId);
         return ResultGenerator.ok();

@@ -1,6 +1,7 @@
 package com.github.bpazy.yearn.service;
 
 import com.github.bpazy.yearn.dao.UserDao;
+import com.github.bpazy.yearn.po.User;
 import com.github.bpazy.yearn.security.UsernamePasswordToken;
 import com.github.bpazy.yearn.vo.LoginVo;
 import com.github.bpazy.yearn.vo.RegisterVo;
@@ -27,6 +28,10 @@ public class LoginService {
     public void register(RegisterVo registerVo) {
         // TODO concurrent handle.
         //  methods: 1.lock
+        User user = userDao.findUserByUsername(registerVo.getUsername());
+        if (user != null) {
+            return;
+        }
         userDao.register(registerVo.toUser());
     }
 }

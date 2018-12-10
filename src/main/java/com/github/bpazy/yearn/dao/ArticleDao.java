@@ -15,5 +15,5 @@ public interface ArticleDao {
     Article findArticle(@Param("articleId") String articleId);
 
     @Insert("insert into article (article_id, title, content, status) values (#{articleId}, #{title}, #{content}, #{status})")
-    void saveBlog(Article article);
+    void saveArticle(Article article);
 }

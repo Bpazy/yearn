@@ -17,7 +17,7 @@ public class ArticleService {
     private ArticleDao articleDao;
 
     public void saveArticle(ArticleVo articleVo) {
-        articleDao.saveBlog(Article.builder()
+        articleDao.saveArticle(Article.builder()
                 .articleId(Id.next() + "")
                 .title(articleVo.getTitle())
                 .content(articleVo.getContent())

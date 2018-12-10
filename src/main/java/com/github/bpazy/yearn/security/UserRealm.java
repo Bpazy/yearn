@@ -43,6 +43,6 @@ public class UserRealm extends AuthorizingRealm {
         if (principals == null || StringUtils.isBlank((String) principals.getPrimaryPrincipal())) {
             return null;
         }
-        return new SimpleAuthorizationInfo(Sets.newHashSet("blog:save", "blog:delete"));
+        return new SimpleAuthorizationInfo(Sets.newHashSet("article:save", "article:delete"));
     }
 }
