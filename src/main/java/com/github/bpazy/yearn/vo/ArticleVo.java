@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class ArticleVo {
+    private String articleId;
     private String title;
     private String content;
 }

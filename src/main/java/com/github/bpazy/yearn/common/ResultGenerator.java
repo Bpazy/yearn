@@ -2,14 +2,14 @@ package com.github.bpazy.yearn.common;
 
 import lombok.experimental.UtilityClass;
 
+import static com.github.bpazy.yearn.common.Constants.FAIL;
+import static com.github.bpazy.yearn.common.Constants.OK;
+
 /**
  * @author ziyuan
  */
 @UtilityClass
 public class ResultGenerator {
-    private static final String OK = "OK";
-    private static final String FAIL = "FAIL";
-
     public static Result ok() {
         return ok(null);
     }

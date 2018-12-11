@@ -19,6 +19,7 @@ public class Article {
     private String title;
     private String content;
     private String status;
+    private String creatorId;
     private Date createTime;
     private Date updateTime;
 }
